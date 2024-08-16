@@ -16,33 +16,29 @@ function addDestinationInfo(
 ) {
   // Here is the HTML formatting for our mission target div.
   /*
-                 <h2>Mission Destination</h2>
-                 <ol>
-                     <li>Name: </li>
-                     <li>Diameter: </li>
-                     <li>Star: ${star}</li>
-                     <li>Distance from Earth: </li>
-                     <li>Number of Moons: </li>
-                 </ol>
-                 <img src="">
-    */
+               <h2>Mission Destination</h2>
+               <ol>
+                   <li>Name: </li>
+                   <li>Diameter: </li>
+                   <li>Star: ${star}</li>
+                   <li>Distance from Earth: </li>
+                   <li>Number of Moons: </li>
+               </ol>
+               <img src="">
+  */
 }
 
 /* NOTE: This function checks whether a given input is empty, a number,
 or not a number, which is crucial for validating the form fields before submission.*/
 
 function validateInput(testInput) {
-  if (testInput === '' || testInput === null || testInput === undefined) {
+  if (testInput === '') {
     return 'Empty';
   }
-
   if (isNaN(testInput)) {
     return 'Not a Number';
   }
-
-  if (!isNaN(testInput)) {
-    return 'Is a Number';
-  }
+  return 'Is a Number';
 }
 
 /* NOTE: Critical function that handles the validation of form inputs, updates the status
@@ -58,10 +54,34 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   let cargoStatus = document.getElementById('cargoStatus');
   let launchStatus = document.getElementById('launchStatus');
 
-  if (fuelLevel < 10000 || cargoLevel > 10000) {
-    launchStatus.innerHTML = 'Shuttle Not Ready for Launch';
+  list.style.visibility = 'hidden'; // hidden by default
+
+  // Update pilot/copilot status
+
+  // Update fuel/cargo status
+  if (validateInput(fuelLevel) < 10000) {
+    list.style.visibility = 'visible';
     launchStatus.style.color = 'red';
+    launchStatus.innerHTML = 'Shuttle Not Ready for Launch';
+    fuelStatus.innerHTML = 'Fuel level too low for launch';
+  } else {
+    fuelStatus.innerHTML = 'Fuel level high enough for launch';
   }
+
+  // Update cargo status
+  if (validateInput(cargoLevel) > 10000) {
+    list.style.visibility = 'visible';
+    launchStatus.style.color = 'red';
+    launchStatus.innerHTML = 'Shuttle Not Ready for Launch';
+    cargoStatus.innerHTML = 'Cargo mass too heavy for launch';
+  } else {
+    cargoStatus.innerHTML = 'Cargo mass low enough for launch';
+  }
+
+  pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+  copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+  launchStatus.style.color = 'green';
+  launchStatus.innerHTML = 'Shuttle is Ready for Launch';
 }
 
 /* NOTE: This function fetches data from an external API. It selects random planets. */
