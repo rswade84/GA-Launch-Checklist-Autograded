@@ -2,6 +2,9 @@
 
 require('cross-fetch/polyfill');
 
+/* NOTE: This function updates the mission destination information on the webpage by
+modifying the DOM with the details of a selected planet.*/
+
 function addDestinationInfo(
   document,
   name,
@@ -25,19 +28,26 @@ function addDestinationInfo(
     */
 }
 
+/* NOTE: This function checks whether a given input is empty, a number,
+or not a number, which is crucial for validating the form fields before submission.*/
+
 function validateInput(testInput) {
   if (testInput === '' || testInput === null || testInput === undefined) {
     return 'Empty';
   }
 
-  if (isNan(testInput)) {
+  if (isNaN(testInput)) {
     return 'Not a Number';
   }
 
-  if (!isNan(testInput)) {
+  if (!isNaN(testInput)) {
     return 'Is a Number';
   }
 }
+
+/* NOTE: Critical function that handles the validation of form inputs, updates the status
+of various mission parameters, and determines if the shuttle is ready for launch based
+on the provided inputs. */
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   let list = document.getElementById('faultyItems');
