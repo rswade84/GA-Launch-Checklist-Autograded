@@ -2,8 +2,22 @@
 
 window.addEventListener('load', function () {
   let form = document.getElementById('launchForm');
+
   form.addEventListener('submit', function (event) {
+    // TODO: Prevent page from reloading
     event.preventDefault();
+
+    // TODO: Call formSubmission within submit listener
+
+    let list = document.getElementById('faultyItems');
+    let pilotName = document.getElementById('pilotName').value;
+    let copilotName = document.getElementById('copilotName').value;
+    let fuelLevel = document.getElementById('fuelLevel').value;
+    let cargoLevel = document.getElementById('cargoLevel').value;
+
+    // TODO: Add form validation for each field
+
+    formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
   });
 
   let listedPlanets;

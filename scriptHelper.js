@@ -49,12 +49,13 @@ function validateInput(testInput) {
 of various mission parameters, and determines if the shuttle is ready for launch based
 on the provided inputs. */
 
+// Use validateInput() in the formSubmission() function below.
+
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-  let list = document.getElementById('faultyItems');
-  let pilot = document.getElementById('pilotStatus');
-  let copilot = document.getElementById('copilotStatus');
-  let fuelLevel = document.getElementById('fuelStatus');
-  let cargoLevel = document.getElementById('cargoStatus');
+  let pilotStatus = document.getElementById('pilotStatus');
+  let copilotStatus = document.getElementById('copilotStatus');
+  let fuelStatus = document.getElementById('fuelStatus');
+  let cargoStatus = document.getElementById('cargoStatus');
   let launchStatus = document.getElementById('launchStatus');
 
   if (fuelLevel < 10000 || cargoLevel > 10000) {
@@ -63,6 +64,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   }
 }
 
+/* NOTE: This function fetches data from an external API. It selects random planets. */
+
 async function myFetch() {
   let planetsReturned;
 
@@ -70,6 +73,9 @@ async function myFetch() {
 
   return planetsReturned;
 }
+
+/*`pickPlanet` should return an object containing the name, diameter, and
+number of moons of the planet. */
 
 function pickPlanet(planets) {}
 
