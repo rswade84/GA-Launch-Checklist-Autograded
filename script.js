@@ -21,8 +21,7 @@ window.addEventListener('load', function () {
 
     // TODO: Add form validation for each field
 
-    // refactor this portion to store all errors in the errors array and display on seperate lines.
-
+    // Store my errors in an array
     let error = [];
 
     if (
@@ -47,28 +46,11 @@ window.addEventListener('load', function () {
       error.push('Please enter a valid cargo mass!');
     }
 
+    // TODO: If either field is blank, add an error to the error array
     if (error.length > 0) {
       alert(error.join('\n'));
       return;
     }
-
-    // if (
-    //   validateInput(pilotName) !== 'Not a Number' ||
-    //   validateInput(copilotName) !== 'Not a Number'
-    // ) {
-    //   error.push(alert('Please enter a valid name!'));
-    //   return;
-    // }
-
-    // if (validateInput(fuelLevel) !== 'Not a Number') {
-    //   alert('Please enter a valid fuel level!');
-    //   return;
-    // }
-
-    // if (validateInput(cargoMass) !== 'Not a Number') {
-    //   alert('Please enter a valid cargo mass!');
-    //   return;
-    // }
 
     // TODO: Call formSubmission within submit listener
 

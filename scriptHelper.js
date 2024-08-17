@@ -57,6 +57,10 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   list.style.visibility = 'hidden'; // hidden by default
 
   // Update pilot/copilot status
+  pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+  copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+  launchStatus.style.color = 'green';
+  launchStatus.innerHTML = 'Shuttle is Ready for Launch';
 
   // Update fuel/cargo status
   if (validateInput(fuelLevel) < 10000) {
@@ -77,11 +81,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   } else {
     cargoStatus.innerHTML = 'Cargo mass low enough for launch';
   }
-
-  pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
-  copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
-  launchStatus.style.color = 'green';
-  launchStatus.innerHTML = 'Shuttle is Ready for Launch';
 }
 
 /* NOTE: This function fetches data from an external API. It selects random planets. */
