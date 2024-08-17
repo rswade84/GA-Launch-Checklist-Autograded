@@ -55,7 +55,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   let cargoStatus = document.getElementById('cargoStatus');
   let launchStatus = document.getElementById('launchStatus');
 
-  list.style.visibility = 'hidden'; // hidden by default
+  list.style.visibility = 'visible';
 
   // Update pilot/copilot status
   pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
