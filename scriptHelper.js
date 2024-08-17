@@ -15,7 +15,9 @@ function addDestinationInfo(
   imageUrl,
 ) {
   // Here is the HTML formatting for our mission target div.
-  /*
+
+  let missionTarget = document.getElementById('missionTarget');
+  missionTarget.innerHTML = `
                <h2>Mission Destination</h2>
                <ol>
                    <li>Name: </li>
@@ -24,8 +26,7 @@ function addDestinationInfo(
                    <li>Distance from Earth: </li>
                    <li>Number of Moons: </li>
                </ol>
-               <img src="">
-  */
+               <img src="">`;
 }
 
 /* NOTE: This function checks whether a given input is empty, a number,
@@ -88,7 +89,11 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 async function myFetch() {
   let planetsReturned;
 
-  planetsReturned = await fetch().then(function (response) {});
+  planetsReturned = await fetch(
+    'https://handlers.education.launchcode.org/static/planets.json',
+  ).then(function (response) {
+    return response.json;
+  });
 
   return planetsReturned;
 }
