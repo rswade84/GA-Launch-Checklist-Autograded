@@ -75,7 +75,8 @@ window.addEventListener('load', function () {
       listedPlanets = result;
     })
     .then(function () {
-      // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
+      /* Below this comment call the appropriate helper functions to pick a planet
+      fom the list of planets and add that information to your destination. */
 
       let planet = pickPlanet(listedPlanets);
       addDestinationInfo(

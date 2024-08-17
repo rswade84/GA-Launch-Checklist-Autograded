@@ -99,7 +99,7 @@ async function myFetch() {
   return planetsReturned;
 }
 
-/*`pickPlanet` should return an object containing the name, diameter, and
+/* NOTE: This function pickPlanet should return an object containing the name, diameter, and
 number of moons of the planet. */
 
 function pickPlanet(planets) {
