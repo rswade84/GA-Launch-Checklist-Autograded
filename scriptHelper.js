@@ -101,7 +101,9 @@ async function myFetch() {
 /*`pickPlanet` should return an object containing the name, diameter, and
 number of moons of the planet. */
 
-function pickPlanet(planets) {}
+function pickPlanet(planets) {
+  return planets[Math.floor(Math.random() * planets.length)];
+}
 
 module.exports.addDestinationInfo = addDestinationInfo;
 module.exports.validateInput = validateInput;
