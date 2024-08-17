@@ -20,13 +20,14 @@ function addDestinationInfo(
   missionTarget.innerHTML = `
                <h2>Mission Destination</h2>
                <ol>
-                   <li>Name: </li>
-                   <li>Diameter: </li>
+                   <li>Name: ${name}</li>
+                   <li>Diameter: ${diameter}</li>
                    <li>Star: ${star}</li>
-                   <li>Distance from Earth: </li>
-                   <li>Number of Moons: </li>
+                   <li>Distance from Earth: ${distance} </li>
+                   <li>Number of Moons: ${moons}</li>
                </ol>
-               <img src="">`;
+               <img src="${imageUrl}">
+               `;
 }
 
 /* NOTE: This function checks whether a given input is empty, a number,
@@ -64,8 +65,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   launchStatus.innerHTML = 'Shuttle is Ready for Launch';
 
   // Update fuel/cargo status
-  if (validateInput(fuelLevel) < 10000) {
-    list.style.visibility = 'visible';
+  if (fuelLevel < 10000) {
+    //list.style.visibility = 'visible';
     launchStatus.style.color = 'red';
     launchStatus.innerHTML = 'Shuttle Not Ready for Launch';
     fuelStatus.innerHTML = 'Fuel level too low for launch';
@@ -74,8 +75,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   }
 
   // Update cargo status
-  if (validateInput(cargoLevel) > 10000) {
-    list.style.visibility = 'visible';
+  if (cargoLevel > 10000) {
+    //list.style.visibility = 'visible';
     launchStatus.style.color = 'red';
     launchStatus.innerHTML = 'Shuttle Not Ready for Launch';
     cargoStatus.innerHTML = 'Cargo mass too heavy for launch';
@@ -92,7 +93,7 @@ async function myFetch() {
   planetsReturned = await fetch(
     'https://handlers.education.launchcode.org/static/planets.json',
   ).then(function (response) {
-    return response.json;
+    return response.json();
   });
 
   return planetsReturned;
