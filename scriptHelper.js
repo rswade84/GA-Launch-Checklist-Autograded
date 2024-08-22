@@ -2,9 +2,7 @@
 
 require('cross-fetch/polyfill');
 
-/* NOTE: This function updates the mission destination information on the webpage by
-modifying the DOM with the details of a selected planet.*/
-
+// NOTE: Updates function updates the mission destination information on the DOM...
 function addDestinationInfo(
   document,
   name,
@@ -30,9 +28,7 @@ function addDestinationInfo(
                `;
 }
 
-/* NOTE: This function checks whether a given input is empty, a number,
-or not a number, which is crucial for validating the form fields before submission.*/
-
+// NOTE: Validates the users inputs...
 function validateInput(testInput) {
   if (testInput === '') {
     return 'Empty';
@@ -43,12 +39,7 @@ function validateInput(testInput) {
   return 'Is a Number';
 }
 
-/* NOTE: Critical function that handles the validation of form inputs, updates the status
-of various mission parameters, and determines if the shuttle is ready for launch based
-on the provided inputs. */
-
-// Use validateInput() in the formSubmission() function below.
-
+// NOTE: Validates the form inputs, updates the status mission on the DOM...
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   let pilotStatus = document.getElementById('pilotStatus');
   let copilotStatus = document.getElementById('copilotStatus');
@@ -66,7 +57,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
   // Update fuel/cargo status
   if (fuelLevel < 10000) {
-    //list.style.visibility = 'visible';
     launchStatus.style.color = 'red';
     launchStatus.innerHTML = 'Shuttle Not Ready for Launch';
     fuelStatus.innerHTML = 'Fuel level too low for launch';
@@ -85,8 +75,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   }
 }
 
-/* NOTE: This function fetches data from an external API. It selects random planets. */
-
+// NOTE: This function fetches and returns planet data from an API...
 async function myFetch() {
   let planetsReturned;
 
@@ -99,8 +88,7 @@ async function myFetch() {
   return planetsReturned;
 }
 
-/* NOTE: This function pickPlanet should return an object containing the name, diameter, and
-number of moons of the planet. */
+// NOTE: pickPlanet selects a random planet from the myFetch() planets array...
 
 function pickPlanet(planets) {
   return planets[Math.floor(Math.random() * planets.length)];
